@@ -1,0 +1,24 @@
+CREATE DATABASE url;
+USE url;
+
+CREATE TABLE urls (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  long_url TEXT NOT NULL,
+  short_url VARCHAR(255) NOT NULL UNIQUE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE redirect_logs (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  url_id INT NOT NULL,
+  ip_address VARCHAR(100),
+  user_agent TEXT,
+  redirected_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (url_id) REFERENCES urls(id) ON DELETE CASCADE
+);
+
+
+USE url;
+SELECT * FROM urls;
+SELECT * FROM redirect_logs;
+
