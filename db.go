@@ -18,7 +18,5 @@ CREATE TABLE redirect_logs (
 );
 
 
-USE url;
-SELECT * FROM urls;
-SELECT * FROM redirect_logs;
+
 
