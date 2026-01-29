@@ -46,7 +46,7 @@ func createURL(originalURL string) string {
 	return shortURL
 }
 
-// fetch original URL from DB - FIXED: changed creation_date to created_at
+// fetch original URL from DB 
 func getURL(id string) (URL, error) {
 	var url URL
 	row := DB.QueryRow("SELECT id, original_url, short_url, created_at FROM urls WHERE id = ?", id)
@@ -96,7 +96,7 @@ func ShortURLHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
-// Redirect handler - ADDED: debug logging
+// Redirect handler 
 func redirectURLHandler(w http.ResponseWriter, r *http.Request) {
 	id := r.URL.Path[len("/redirect/"):]
 	fmt.Printf("🔍 Looking for ID: '%s'\n", id) // Debug log
@@ -129,3 +129,4 @@ func main() {
 		fmt.Println("Error on starting server:", err)
 	}
 }
+
